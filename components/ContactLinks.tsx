@@ -1,40 +1,49 @@
 const links = [
   {
     label: "Email",
-    href: "mailto:hello@marketingagency.sg",
     sub: "hello@marketingagency.sg",
+    href: "mailto:hello@marketingagency.sg",
     external: false,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/eugene-leow",
     sub: "in/eugene-leow",
+    href: "https://www.linkedin.com/in/eugene-leow",
     external: true,
   },
   {
     label: "Website",
-    href: "https://freelanceseo.sg",
     sub: "freelanceseo.sg",
+    href: "https://freelanceseo.sg",
     external: true,
   },
 ];
 
 export default function ContactLinks() {
   return (
-    <div className="grid gap-2">
+    <ul className="divide-y divide-ink/15">
       {links.map((l) => (
-        <a
-          key={l.label}
-          href={l.href}
-          {...(l.external
-            ? { target: "_blank", rel: "noopener noreferrer" }
-            : {})}
-          className="flex items-center justify-between rounded-xl border border-[var(--border)] bg-[var(--background)]/40 px-4 py-3 text-sm transition hover:border-accent hover:bg-accent/5"
-        >
-          <span className="font-medium">{l.label}</span>
-          <span className="text-[var(--muted)]">{l.sub}</span>
-        </a>
+        <li key={l.label}>
+          <a
+            href={l.href}
+            {...(l.external
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="group flex items-baseline justify-between gap-4 py-3.5 transition hover:text-accent"
+          >
+            <span className="font-serif text-lg italic text-ink/70 group-hover:text-accent">
+              {l.label}
+            </span>
+            <span className="flex-1 -translate-y-[5px] border-b border-dotted border-ink/25 transition group-hover:border-accent/40" />
+            <span className="text-[15px]">
+              {l.sub}
+              <span className="ml-2 text-ink/40 transition group-hover:text-accent">
+                &rarr;
+              </span>
+            </span>
+          </a>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

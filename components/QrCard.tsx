@@ -14,19 +14,15 @@ export default function QrCard() {
       width: 512,
       margin: 2,
       errorCorrectionLevel: "M",
-      color: { dark: "#0f172a", light: "#ffffff" },
+      color: { dark: "#171512", light: "#ffffff" },
     })
       .then(setDataUrl)
       .catch(() => setDataUrl(null));
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <h2 className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-        Share this card
-      </h2>
-
-      <div className="flex h-64 w-64 items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-white p-3">
+    <div className="flex flex-col items-start gap-4">
+      <div className="flex h-44 w-44 items-center justify-center border border-ink/20 bg-white p-2">
         {dataUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -35,12 +31,12 @@ export default function QrCard() {
             className="h-full w-full"
           />
         ) : (
-          <div className="h-full w-full animate-pulse rounded-xl bg-[var(--border)]/60" />
+          <div className="h-full w-full animate-pulse bg-ink/10" />
         )}
       </div>
 
       {url && (
-        <p className="break-all text-center text-xs text-[var(--muted)]">
+        <p className="break-all font-mono text-[10px] uppercase tracking-[0.2em] text-ink/50">
           {url}
         </p>
       )}
@@ -49,11 +45,11 @@ export default function QrCard() {
         href={dataUrl ?? "#"}
         download="eugene-leow-qr.png"
         aria-disabled={!dataUrl}
-        className={`inline-flex w-full items-center justify-center rounded-xl bg-accent px-4 py-3 text-sm font-medium text-white transition hover:opacity-90 ${
+        className={`inline-block border-b border-ink/70 pb-1 text-base transition hover:border-accent hover:text-accent ${
           dataUrl ? "" : "pointer-events-none opacity-50"
         }`}
       >
-        Download QR as PNG
+        Download QR (.png) &nbsp;&rarr;
       </a>
     </div>
   );
