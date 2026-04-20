@@ -18,7 +18,7 @@ export default function Home() {
     <main className="mx-auto flex min-h-screen w-full max-w-xl flex-col px-6 py-16 sm:py-24">
       <header className="border-y border-ink/25 py-3">
         <p className="text-center text-[10px] font-medium uppercase tracking-[0.4em] text-ink/70">
-          Consultant &middot; Singapore
+          SEO Consultant &middot; Singapore
         </p>
       </header>
 
@@ -49,11 +49,11 @@ export default function Home() {
           {roles.map((r) => (
             <li
               key={r.org}
-              className="flex items-baseline gap-3 font-serif text-lg"
+              className="flex items-baseline gap-3 text-[15px]"
             >
-              <span className="italic text-ink/70">{r.role}</span>
+              <span className="font-medium text-ink/70">{r.role}</span>
               <span className="flex-1 -translate-y-[5px] border-b border-dotted border-ink/30" />
-              <span>{r.org}</span>
+              <span className="font-serif text-lg">{r.org}</span>
             </li>
           ))}
         </ul>
